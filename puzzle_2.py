@@ -56,8 +56,11 @@ class Puzzle_2(Gtk.Window):
 
     #funció que crida el thread
     def scan_uid(self):
-        uid = self.lector.read_uid()
-        self.text.set_label("\n                     " + uid + "\n")
+    	uid = self.lector.read_uid()
+    	GLib.idle_add(self.show_uid, uid)
+   	 
+	def show_uid(sef, uid):
+    	self.text.set_label("\n                 	" + uid + "\n")
 
 
 finestra = Puzzle_2()
